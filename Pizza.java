@@ -27,6 +27,8 @@
 
     7. The printInputs method was created at first for debugging purposes and can be removed.
        It's commented out in the main, thus never called. Doesn't hurt that it's there though.
+
+    8. Convert the multiple printlines to single calls.
 **/
 
 import java.io.*;
