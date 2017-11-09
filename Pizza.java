@@ -127,12 +127,11 @@ public class Pizza {
         System.out.print("Enter the diameter of regular pizza size:");
         this.setDiameterRegular(sc.nextDouble());
         System.out.print("Enter the diameter of family pizza size:");
-		this.setDiameterFamily(sc.nextDouble());
+        this.setDiameterFamily(sc.nextDouble());
         System.out.print("Enter the price for the regular pizza:");
         this.setPriceRegular(sc.nextDouble());
         System.out.print("Enter the price for the family pizza:");
         this.setPriceFamily(sc.nextDouble());
-
     }
 
     // Just a method to dump the private variable values - For debugging purposes
@@ -152,10 +151,10 @@ public class Pizza {
 
     public void calculateFamily() {
         // The number of family pizzas to be ordered depends on the number of people.
-		int numOfFamilyPizzas = (this.getNumPeople()%2 == 0) ? this.getNumPeople()/2 : this.getNumPeople()/2 + 1;
+        int numOfFamilyPizzas = (this.getNumPeople()%2 == 0) ? this.getNumPeople()/2 : this.getNumPeople()/2 + 1;
         this.setTotalPriceFamily(numOfFamilyPizzas * this.getPriceFamily());
         this.setTotalAreaFamily(Math.PI * Math.pow(this.getDiameterFamily(),2) * 1/2 * this.getNumPeople());
-		this.setFamilyPrSurfRate(this.getTotalPriceFamily()/this.getTotalAreaFamily());
+        this.setFamilyPrSurfRate(this.getTotalPriceFamily()/this.getTotalAreaFamily());
     }
 
     public void compare() {
