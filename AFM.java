@@ -86,9 +86,9 @@ public class AFM {
 	public static void main (String[] args) {
 
 		AFM afm = new AFM();
+		Scanner sc = new Scanner(System.in);
 
 		while (true) {
-			Scanner sc = new Scanner(System.in);
 
 			System.out.print("Give AFM to check: ");
 			afm.setAfmValue(sc.nextLine());
