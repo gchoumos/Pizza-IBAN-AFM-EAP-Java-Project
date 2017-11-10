@@ -9,10 +9,9 @@
        using the ENGLISH one through the useLocale method on the scanner
        object.
 
-    3. The total price and area privates are most probably an overkill. This
-       is true only in the context of this exercise. Otherwise, and with regards
-       to expandability, they are not an overkill at all and I would actually
-       encourage their existence.
+    3. Accessors and mutators seemed like an overkill with regards to this
+	   particular exercise. So, although they were first created, now they
+	   are removed.
 
     4. Instead of using the ternary operator twice for the actual number of family
        pizzas that need to be ordered, it can just be stored as a private variable too.
@@ -47,75 +46,9 @@ public class Pizza {
 
     private double regularPrSurfRate, familyPrSurfRate;
 
-    // Mutators
-    public void setDiameterRegular(double val) {
-        this.diameterRegular = val;
-    }
-    public void setDiameterFamily(double val) {
-        this.diameterFamily = val;
-    }
-    public void setPriceRegular(double val) {
-        this.priceRegular = val;
-    }
-    public void setPriceFamily(double val) {
-        this.priceFamily = val;
-    }
-    public void setNumPeople(int val) {
-        this.numPeople = val;
-    }
-    public void setTotalPriceRegular(double val) {
-        this.totalPriceRegular = val;
-    }
-    public void setTotalPriceFamily(double val) {
-        this.totalPriceFamily = val;
-    }
-    public void setTotalAreaRegular(double val) {
-        this.totalAreaRegular = val;
-    }
-    public void setTotalAreaFamily(double val) {
-        this.totalAreaFamily = val;
-    }
-    public void setRegularPrSurfRate(double val) {
-        this.regularPrSurfRate = val;
-    }
-    public void setFamilyPrSurfRate(double val) {
-        this.familyPrSurfRate = val;
-    }
-
-    // Accessors
-    public double getDiameterRegular() {
-        return this.diameterRegular;
-    }
-    public double getDiameterFamily() {
-        return this.diameterFamily;
-    }
-    public double getPriceRegular() {
-        return this.priceRegular;
-    }
-    public double getPriceFamily() {
-        return this.priceFamily;
-    }
-    public int getNumPeople() {
-        return this.numPeople;
-    }
-    public double getTotalPriceRegular() {
-        return this.totalPriceRegular;
-    }
-    public double getTotalPriceFamily() {
-        return this.totalPriceFamily;
-    }
-    public double getTotalAreaRegular() {
-        return this.totalAreaRegular;
-    }
-    public double getTotalAreaFamily() {
-        return this.totalAreaFamily;
-    }
-    public double getRegularPrSurfRate() {
-        return this.regularPrSurfRate;
-    }
-    public double getFamilyPrSurfRate() {
-        return this.familyPrSurfRate;
-    }
+    // All the private members are being accessed by the object itself so
+	// the accessors and mutators would be an overkill for the purpose of
+	// this exercise
 
 	// Method responsible for the user inputs
     public void readUserInput() {
@@ -124,72 +57,72 @@ public class Pizza {
 
         // Time to read the required input and set the private members accordingly
         System.out.print("Please enter the number of participants:");
-        this.setNumPeople(sc.nextInt());
+        this.numPeople = sc.nextInt();
 
         System.out.print("Enter the diameter of regular pizza size:");
-        this.setDiameterRegular(sc.nextDouble());
+        this.diameterRegular = sc.nextDouble();
         System.out.print("Enter the diameter of family pizza size:");
-        this.setDiameterFamily(sc.nextDouble());
+        this.diameterFamily = sc.nextDouble();
         System.out.print("Enter the price for the regular pizza:");
-        this.setPriceRegular(sc.nextDouble());
+        this.priceRegular = sc.nextDouble();
         System.out.print("Enter the price for the family pizza:");
-        this.setPriceFamily(sc.nextDouble());
+        this.priceFamily = sc.nextDouble();
     }
 
     // Just a method to dump the private variable values - For debugging purposes
     public void printInputs() {
-        System.out.println("Participants: " + this.getNumPeople());
-        System.out.println("Regular diameter: " + this.getDiameterRegular() + " cm");
-        System.out.println("Family diameter: " + this.getDiameterFamily() + " cm");
-        System.out.println("Regular price: " + this.getPriceRegular() + " euros");
-        System.out.println("Family price: " + this.getPriceFamily() + " euros");
+        System.out.println("Participants: " + this.numPeople);
+        System.out.println("Regular diameter: " + this.diameterRegular + " cm");
+        System.out.println("Family diameter: " + this.diameterFamily + " cm");
+        System.out.println("Regular price: " + this.priceRegular + " euros");
+        System.out.println("Family price: " + this.priceFamily + " euros");
     }
 
     public void calculateRegular() {
-        this.setTotalPriceRegular(this.getPriceRegular() * this.getNumPeople());
-        this.setTotalAreaRegular(Math.PI * Math.pow(this.getDiameterRegular(),2) * this.getNumPeople());
-        this.setRegularPrSurfRate(this.getTotalPriceRegular()/this.getTotalAreaRegular());
+        this.totalPriceRegular = this.priceRegular * this.numPeople;
+        this.totalAreaRegular = Math.PI * Math.pow(this.diameterRegular,2) * this.numPeople;
+        this.regularPrSurfRate = this.totalPriceRegular/this.totalAreaRegular;
     }
 
     public void calculateFamily() {
         // The number of family pizzas to be ordered depends on the number of people.
-        int numOfFamilyPizzas = (this.getNumPeople()%2 == 0) ? this.getNumPeople()/2 : this.getNumPeople()/2 + 1;
-        this.setTotalPriceFamily(numOfFamilyPizzas * this.getPriceFamily());
-        this.setTotalAreaFamily(Math.PI * Math.pow(this.getDiameterFamily(),2) * 1/2 * this.getNumPeople());
-        this.setFamilyPrSurfRate(this.getTotalPriceFamily()/this.getTotalAreaFamily());
+        int numOfFamilyPizzas = (this.numPeople % 2 == 0) ? this.numPeople/2 : this.numPeople/2 + 1;
+        this.totalPriceFamily = numOfFamilyPizzas * this.priceFamily;
+        this.totalAreaFamily = Math.PI * Math.pow(this.diameterFamily,2) * 1/2 * this.numPeople;
+        this.familyPrSurfRate = this.totalPriceFamily/this.totalAreaFamily;
     }
 
     public void compare() {
-        int numOfFamilyPizzas = (this.getNumPeople()%2 == 0) ? this.getNumPeople()/2 : this.getNumPeople()/2 + 1;
+        int numOfFamilyPizzas = (this.numPeople%2 == 0) ? this.numPeople/2 : this.numPeople/2 + 1;
 
-        System.out.println("There are " + this.getNumPeople() + " that will participate in the order\n");
+        System.out.println("There are " + this.numPeople + " that will participate in the order\n");
 
         System.out.println("If they choose to go with the regular size:");
-        System.out.println("\tTotal number of pizzas: " + this.getNumPeople());
-        System.out.println("\tTotal price: " + this.getTotalPriceRegular() + " euros");
-        System.out.println("\tTotal area eaten: " + this.getTotalAreaRegular() + " cm^2");
-        System.out.println("\tPrice/Area rate: " + this.getRegularPrSurfRate() + "\n");
+        System.out.println("\tTotal number of pizzas: " + this.numPeople);
+        System.out.println("\tTotal price: " + this.totalPriceRegular + " euros");
+        System.out.println("\tTotal area eaten: " + this.totalAreaRegular + " cm^2");
+        System.out.println("\tPrice/Area rate: " + this.regularPrSurfRate + "\n");
 
         System.out.println("If they choose to go with the family size:");
         System.out.println("\tTotal number of pizzas: " + numOfFamilyPizzas);
-        System.out.println("\tTotal price: " + this.getTotalPriceFamily() + " euros");
-        System.out.println("\tTotal area eaten: " + this.getTotalAreaFamily() + " cm^2");
-        System.out.println("\tPrice/Area rate: " + this.getFamilyPrSurfRate() + "\n");
+        System.out.println("\tTotal price: " + this.totalPriceFamily + " euros");
+        System.out.println("\tTotal area eaten: " + this.totalAreaFamily + " cm^2");
+        System.out.println("\tPrice/Area rate: " + this.familyPrSurfRate + "\n");
 
-        if (this.getNumPeople()%2 != 0) {
+        if (this.numPeople%2 != 0) {
             System.out.println("\nNOTE:");
             System.out.println("In the family case, since there is an odd number of participants, half a family pizza will go to waste!");
-            System.out.println("This half wasted family pizza area has NOT been taken into account in the calculation of the ratio!");
+            System.out.println("This half wasted family pizza area has NOT been taken into account as eaten for the calculation of the ratio!");
             System.out.println("However, the price has been calculated. This is the expected behaviour.");
         }
 
         System.out.println("\nResult:\n*******");
-        if (this.getRegularPrSurfRate() < this.getFamilyPrSurfRate()) {
-            System.out.println("Order " + this.getNumPeople() + " regular pizza(s).");
-            System.out.println("The price/surface rate is " + this.getRegularPrSurfRate()); 
+        if (this.regularPrSurfRate < this.familyPrSurfRate) {
+            System.out.println("Order " + this.numPeople + " regular pizza(s).");
+            System.out.println("The price/surface rate is " + this.regularPrSurfRate); 
         } else {
             System.out.println("Order " + numOfFamilyPizzas + " family pizza(s).");
-            System.out.println("The price/surface rate is " + this.getFamilyPrSurfRate()); 
+            System.out.println("The price/surface rate is " + this.familyPrSurfRate); 
         }
     }
 
