@@ -10,8 +10,8 @@
        object.
 
     3. Accessors and mutators seemed like an overkill with regards to this
-	   particular exercise. So, although they were first created, now they
-	   are removed.
+       particular exercise. So, although they were first created, now they
+       are removed.
 
     4. Instead of using the ternary operator twice for the actual number of family
        pizzas that need to be ordered, it can just be stored as a private variable too.
@@ -47,10 +47,10 @@ public class Pizza {
     private double regularPrSurfRate, familyPrSurfRate;
 
     // All the private members are being accessed by the object itself so
-	// the accessors and mutators would be an overkill for the purpose of
-	// this exercise
+    // the accessors and mutators would be an overkill for the purpose of
+    // this exercise
 
-	// Method responsible for the user inputs
+    // Method responsible for the user inputs
     public void readUserInput() {
 
         Scanner sc = new Scanner(System.in);
