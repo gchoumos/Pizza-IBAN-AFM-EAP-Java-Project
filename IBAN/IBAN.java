@@ -86,7 +86,7 @@ public class IBAN {
 		}
 	}
 
-	// Will return the IBAN after it got fixed
+	// We know how to fix the iban and that's what we actually do here
 	private void finalFixIBAN() {
 		char[] fixed = ("" + (Integer.parseInt(new String (this.ibanInCheck2))%97)).toCharArray();
 		if (Integer.parseInt(new String(fixed)) < 10) {
