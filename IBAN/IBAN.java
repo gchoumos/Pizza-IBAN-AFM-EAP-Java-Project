@@ -1,9 +1,4 @@
 /**
-  Clarification needed:
-    There is no information on whether we should expect all the mod results (apart
-	from the last one) to be 2-digits long. The document shared doesn't include
-	such indication.
-
   TODOs:
     1. 
 **/
@@ -112,13 +107,11 @@ public class IBAN {
 
 		// STEP 1: Move the first 4 chars to the end
 		move4FirstToEnd();	
-		
 		// STEP 2: Convert G and R to 16 and 27 respectively
 		convertGRToDigits();
-		
 		// STEPS 3 to 8: Calculate mod, replace and repeat.
 		calculateModReplaceRepeat();
-		
+
 		// STEP 9: Return whether the given IBAN was good or not
 		return finalCheckIBAN();
 	}
