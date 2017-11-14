@@ -43,7 +43,7 @@ public class IBAN {
 		}
 	}
 
-	// This method will calculation steps of mod97 and replacements.
+	// This method will perform the calculation steps of mod97 and the replacements.
 	private void calculateModReplaceRepeat() {
 		// will be performed 3 times
 		for (int i=0;i<3;i++) {
