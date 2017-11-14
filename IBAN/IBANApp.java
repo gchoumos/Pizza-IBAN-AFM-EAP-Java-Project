@@ -3,9 +3,6 @@
     1. We could catch and print both format errors as well using a flag. For example
        an IBAN candidate could be 26 characters long AND not starting with GR. In
        that case we could print both errors but maybe that's an overkill.
-    2. If the output file already exists, it will be appended. We can actually
-       notify the user about it. It seems normal though for the program to behave
-       this way.
 **/
 
 import java.io.*;
