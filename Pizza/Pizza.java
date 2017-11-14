@@ -80,7 +80,7 @@ public class Pizza {
 
     public void calculateRegular() {
         this.totalPriceRegular = this.priceRegular * this.numPeople;
-        this.totalAreaRegular = Math.PI * Math.pow(this.diameterRegular,2) * this.numPeople;
+        this.totalAreaRegular = Math.PI * Math.pow(this.diameterRegular/2,2) * this.numPeople;
         this.regularPrSurfRate = this.totalPriceRegular/this.totalAreaRegular;
     }
 
@@ -88,7 +88,7 @@ public class Pizza {
         // The number of family pizzas to be ordered depends on the number of people.
         int numOfFamilyPizzas = (this.numPeople % 2 == 0) ? this.numPeople/2 : this.numPeople/2 + 1;
         this.totalPriceFamily = numOfFamilyPizzas * this.priceFamily;
-        this.totalAreaFamily = Math.PI * Math.pow(this.diameterFamily,2) * 1/2 * this.numPeople;
+        this.totalAreaFamily = Math.PI * Math.pow(this.diameterFamily/2,2) * 1/2 * this.numPeople;
         this.familyPrSurfRate = this.totalPriceFamily/this.totalAreaFamily;
     }
 
