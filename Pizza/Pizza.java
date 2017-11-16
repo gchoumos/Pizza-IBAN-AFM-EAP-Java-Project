@@ -1,5 +1,5 @@
 /**
-  TODOs:
+  Notes:
     1. Input validation is always a nice-to-have. This program can easily
        be expanded in order to include those sanity checks and foolproof
        functionality.
@@ -13,21 +13,17 @@
        particular exercise. So, although they were first created, now they
        are removed.
 
-    4. Instead of using the ternary operator twice for the actual number of family
-       pizzas that need to be ordered, it can just be stored as a private variable too.
-       That's really an unimportant beautification detail though.
-
-    5. The output of compare method is verbose. It can be reduced, but for the purpose of
+    4. The output of compare method is verbose. It can be reduced, but for the purpose of
        this exercise it seems like it is nice to have all the info that led to the decision
        there instead of having the program to work as a completely black box.
 
-    6. I could add the case where both the regular and the family price/area ratio are equal.
+    5. I could add the case where both the regular and the family price/area ratio are equal.
        For now, this extreme case will output the family proposal.
 
-    7. The printInputs method was created at first for debugging purposes and can be removed.
+    6. The printInputs method was created at first for debugging purposes and can be removed.
        It's commented out in the main, thus never called. Doesn't hurt that it's there though.
 
-    8. Convert the multiple printlines to single calls.
+    7. Convert the multiple printlines to single calls.
 **/
 
 import java.io.*;
@@ -86,7 +82,12 @@ public class Pizza {
 
     public void calculateFamily() {
         // The number of family pizzas to be ordered depends on the number of people.
-        int numOfFamilyPizzas = (this.numPeople % 2 == 0) ? this.numPeople/2 : this.numPeople/2 + 1;
+        int numOfFamilyPizzas;
+        if (this.numPeople % 2 == 0) {
+            numOfFamilyPizzas = this.numPeople/2;
+        } else {
+            numOfFamilyPizzas = this.numPeople/2 + 1;
+        }
         this.totalPriceFamily = numOfFamilyPizzas * this.priceFamily;
         this.totalAreaFamily = Math.PI * Math.pow(this.diameterFamily/2,2) * 1/2 * this.numPeople;
         this.familyPrSurfRate = this.totalPriceFamily/this.totalAreaFamily;
