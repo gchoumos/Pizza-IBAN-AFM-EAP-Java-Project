@@ -48,7 +48,7 @@ public class AFM {
     // Method to check the afm consists only of digits. Sum is also calculated.
     public boolean checkDigitsAndCalculate() {
         // Iterate through the given afm
-        for(int i=0;i<9;i++) {
+        for(int i=0;i<8;i++) {
             if (Character.isDigit(this.afmValue.charAt(i))) {
                 // It is a digit indeed - So update the sum accordingly - Cast the Math.pow result to int
                 this.updateSum(Character.getNumericValue(this.afmValue.charAt(i)) * (int) Math.pow(2,8-i));
